@@ -4,30 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | Desenvolvedor</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; color:#1f2937; line-height:1.6; background:#ffffff; }
+    a { text-decoration: none; }
+    .container { width:90%; max-width:1100px; margin:auto; }
+
+    /* HERO */
+    .hero { padding:80px 20px; background: linear-gradient(135deg,#1f1f1f,#3b3b3b); color:#fff; }
+    .hero-content { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1200px; margin:auto; }
+    .hero-text { flex:1 1 500px; margin-right:20px; }
+    .hero-text h1 { font-size:2.8rem; margin-bottom:15px; }
+    .hero-text h1 span { color:#00d1b2; }
+    .hero-text h2 { font-size:1.8rem; margin-bottom:15px; color:#fff; font-weight:400; }
+    .hero-text p { font-size:1.1rem; margin-bottom:20px; line-height:1.6; }
+    .hero-skills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+    .hero-skills span { background:#00d1b2; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.9rem; }
+    .btn { display:inline-block; background:#ff6b6b; color:#fff; padding:12px 25px; border-radius:30px; font-weight:bold; transition:all 0.3s ease; }
+    .btn:hover { background:#ff4757; }
+
+    .hero-image { flex:1 1 400px; text-align:center; max-width:400px; margin:auto; }
+    .hero-image img { width:100%; height:auto; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.3); object-fit:cover; }
+
+    /* SECTIONS */
+    .section { padding:80px 0; text-align:center; }
+    .section h2 { font-size:2.2rem; margin-bottom:25px; }
+    .section p { max-width:700px; margin:auto; }
+    .light { background:#f8fafc; }
+    .dark { background:#020617; color:white; }
+
+    /* GRID */
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; margin-top:50px; }
+
+    /* CARDS */
+    .card, .project { background:white; padding:30px; border-radius:10px; box-shadow:0 10px 20px rgba(0,0,0,0.08); transition:transform 0.3s ease; }
+    .card:hover, .project:hover { transform:translateY(-6px); }
+    .card h3, .project h3 { margin-bottom:10px; color:#0f172a; }
+    .link { display:inline-block; margin-top:10px; color:#0284c7; font-weight:bold; }
+
+    /* FORM */
+    .form-container { max-width:500px; margin:40px auto; position:relative; background:#1f2937; padding:30px; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+    .form-container input, .form-container textarea { width:100%; padding:14px 18px; margin-bottom:15px; border-radius:8px; border:none; outline:none; font-size:1rem; background:#f8fafc; transition:all 0.3s ease; }
+    .form-container input:focus, .form-container textarea:focus { box-shadow:0 0 0 3px #00d1b2; }
+    .form-container textarea { resize:none; min-height:120px; }
+    .form-container button { width:100%; padding:14px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; background:#00d1b2; color:white; font-size:1rem; transition:all 0.3s ease; }
+    .form-container button:hover { background:#00b89c; }
+
+    /* Popup */
+    #form-popup { text-align:center; font-weight:bold; font-size:14px; padding:10px 15px; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.2); position:absolute; top:-60px; left:50%; transform:translateX(-50%); opacity:0; transition:all 0.5s ease; z-index:10; }
+
+    /* FOOTER */
+    .footer { background:#020617; color:#9ca3af; text-align:center; padding:20px 0; }
+    .info { margin-top:20px; font-size:0.9rem; }
+
+    /* RESPONSIVE */
+    @media screen and (max-width:900px) {
+      .hero-content { flex-direction:column; text-align:center; }
+      .hero-text { margin-right:0; }
+      .hero-image { margin-top:30px; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- HERO -->
   <header class="hero">
     <div class="container hero-content">
-      <!-- Text Content -->
       <div class="hero-text">
         <h1>Olá, eu sou <span>Desenvolvedor Web & App</span> 👋</h1>
-        <h2>Criação de sites, aplicativos e soluções inteligentes com IA</h2>
+        <h2>Criação de sites, apps e soluções com IA</h2>
         <p>Ajudo empresas a crescer online, criar experiências incríveis para clientes e automatizar processos com inteligência artificial.</p>
-        
-        <!-- Skills badges -->
         <div class="hero-skills">
           <span>🌐 Web Development</span>
           <span>📱 Mobile Apps</span>
           <span>🤖 AI Solutions</span>
         </div>
-
         <a href="#contato" class="btn">Fale comigo</a>
       </div>
-
-      <!-- Hero Image -->
       <div class="hero-image">
         <img src="images/profile.jpg" alt="Desenvolvedor Web e App" />
       </div>
@@ -38,9 +92,7 @@
   <section class="section">
     <div class="container">
       <h2>Sobre mim</h2>
-      <p>
-        Desenvolvo sites modernos, aplicativos personalizados e soluções com IA para ajudar empresas a crescer, vender mais e se conectar melhor com seus clientes.
-      </p>
+      <p>Desenvolvo sites modernos, aplicativos personalizados e soluções com IA para ajudar empresas a crescer, vender mais e se conectar melhor com seus clientes.</p>
     </div>
   </section>
 
@@ -71,19 +123,16 @@
       <h2>Projetos</h2>
       <div class="grid">
         <div class="project">
-          <img src="images/site-institucional.png" alt="Site Institucional" class="project-img" />
           <h3>Site Institucional</h3>
           <p>Website profissional para empresas.</p>
           <a href="#" class="link">Ver projeto</a>
         </div>
         <div class="project">
-          <img src="images/sistema-ia.png" alt="Sistema com IA" class="project-img" />
           <h3>Sistema com IA</h3>
           <p>Automação e atendimento inteligente.</p>
           <a href="#" class="link">Ver projeto</a>
         </div>
         <div class="project">
-          <img src="images/app-negocios.png" alt="App de Negócios" class="project-img" />
           <h3>App de Negócios</h3>
           <p>Aplicativo para gestão e vendas.</p>
           <a href="#" class="link">Ver projeto</a>
@@ -96,18 +145,15 @@
   <section id="contato" class="section dark">
     <div class="container">
       <h2>Contato</h2>
-      
-      <div class="form-container" style="position:relative;">
+      <div class="form-container">
         <form id="contact-form">
           <input type="text" name="name" placeholder="Seu nome" required />
           <input type="email" name="email" placeholder="Seu e-mail" required />
           <textarea name="message" placeholder="Sua mensagem" required></textarea>
           <button type="submit">Enviar mensagem</button>
         </form>
-
-        <div id="form-popup" style="display:none;"></div>
+        <div id="form-popup"></div>
       </div>
-
       <p class="info">
         📧 Email: nzubeikechukwu25@gmail.com <br>
         📱 WhatsApp: +55 (55) 996689852
@@ -120,50 +166,42 @@
     <p>© 2026 • Desenvolvedor Web & App</p>
   </footer>
 
-  <!-- FORM POPUP JS -->
+  <!-- SCRIPT -->
   <script>
     const popup = document.getElementById("form-popup");
     const form = document.getElementById("contact-form");
 
-    form.addEventListener("submit", async function(e) {
+    form.addEventListener("submit", async function(e){
       e.preventDefault();
-
       const data = new FormData(form);
 
-      try {
+      try{
         const response = await fetch("https://formspree.io/f/xeelzjkw", {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
+          method:"POST",
+          body:data,
+          headers:{ Accept:"application/json" }
         });
 
-        if (response.ok) {
+        if(response.ok){
           form.reset();
           popup.innerText = "✅ Mensagem enviada com sucesso!";
-          popup.style.display = "block";
           popup.style.background = "#4CAF50";
           popup.style.color = "#fff";
-          popup.style.padding = "12px 20px";
-          popup.style.position = "absolute";
-          popup.style.top = "-50px";
-          popup.style.left = "50%";
-          popup.style.transform = "translateX(-50%)";
-          popup.style.borderRadius = "5px";
-          popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
-          popup.style.fontFamily = "Arial, sans-serif";
-          popup.style.fontSize = "14px";
-          popup.style.transition = "all 0.5s ease";
           popup.style.opacity = "1";
+          popup.style.display = "block";
 
-          setTimeout(() => {
-            popup.style.opacity = "0";
-            setTimeout(() => popup.style.display = "none", 500);
-          }, 3000);
-        } else {
-          alert("❌ Erro ao enviar. Tente novamente.");
+          setTimeout(()=>{
+            popup.style.opacity="0";
+            setTimeout(()=>popup.style.display="none",500);
+          },3000);
+        }else{
+          popup.innerText="❌ Erro ao enviar. Tente novamente.";
+          popup.style.background="#f44336";
+          popup.style.display="block";
+          popup.style.opacity="1";
+          setTimeout(()=>{popup.style.opacity="0"; setTimeout(()=>popup.style.display="none",500);},3000);
         }
-
-      } catch (error) {
+      }catch(error){
         alert("❌ Erro de conexão. Tente novamente.");
       }
     });
@@ -171,3 +209,4 @@
 
 </body>
 </html>
+
