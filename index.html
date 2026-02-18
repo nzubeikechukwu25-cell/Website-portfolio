@@ -10,38 +10,36 @@
 
   <!-- HERO -->
   <header class="hero">
-  <div class="container hero-content">
-    <!-- Text Content -->
-    <div class="hero-text">
-      <h1>Olá, eu sou <span>Desenvolvedor Web & App</span> 👋</h1>
-      <p>Criação de sites modernos, aplicativos personalizados e soluções com Inteligência Artificial para empresas que querem crescer e se destacar online.</p>
-      
-      <!-- Skills / tags -->
-      <div class="hero-skills">
-        <span>🌐 Web Development</span>
-        <span>📱 Mobile Apps</span>
-        <span>🤖 AI Solutions</span>
+    <div class="container hero-content">
+      <!-- Text Content -->
+      <div class="hero-text">
+        <h1>Olá, eu sou <span>Desenvolvedor Web & App</span> 👋</h1>
+        <h2>Criação de sites, aplicativos e soluções inteligentes com IA</h2>
+        <p>Ajudo empresas a crescer online, criar experiências incríveis para clientes e automatizar processos com inteligência artificial.</p>
+        
+        <!-- Skills badges -->
+        <div class="hero-skills">
+          <span>🌐 Web Development</span>
+          <span>📱 Mobile Apps</span>
+          <span>🤖 AI Solutions</span>
+        </div>
+
+        <a href="#contato" class="btn">Fale comigo</a>
       </div>
 
-      <a href="#contato" class="btn">Fale comigo</a>
+      <!-- Hero Image -->
+      <div class="hero-image">
+        <img src="images/profile.jpg" alt="Desenvolvedor Web e App" />
+      </div>
     </div>
-
-    <!-- Hero Image -->
-    <div class="hero-image">
-      <img src="profile.jpg" alt="Desenvolvedor Web e App" />
-    </div>
-  </div>
-</header>
-
+  </header>
 
   <!-- SOBRE -->
   <section class="section">
     <div class="container">
       <h2>Sobre mim</h2>
       <p>
-        Desenvolvo **sites modernos**, **aplicativos personalizados** e
-        **soluções com IA** para ajudar empresas a crescer, vender mais e
-        se conectar melhor com seus clientes.
+        Desenvolvo sites modernos, aplicativos personalizados e soluções com IA para ajudar empresas a crescer, vender mais e se conectar melhor com seus clientes.
       </p>
     </div>
   </section>
@@ -73,16 +71,19 @@
       <h2>Projetos</h2>
       <div class="grid">
         <div class="project">
+          <img src="images/site-institucional.png" alt="Site Institucional" class="project-img" />
           <h3>Site Institucional</h3>
           <p>Website profissional para empresas.</p>
           <a href="#" class="link">Ver projeto</a>
         </div>
         <div class="project">
+          <img src="images/sistema-ia.png" alt="Sistema com IA" class="project-img" />
           <h3>Sistema com IA</h3>
           <p>Automação e atendimento inteligente.</p>
           <a href="#" class="link">Ver projeto</a>
         </div>
         <div class="project">
+          <img src="images/app-negocios.png" alt="App de Negócios" class="project-img" />
           <h3>App de Negócios</h3>
           <p>Aplicativo para gestão e vendas.</p>
           <a href="#" class="link">Ver projeto</a>
@@ -90,24 +91,22 @@
       </div>
     </div>
   </section>
+
   <!-- CONTATO -->
   <section id="contato" class="section dark">
     <div class="container">
       <h2>Contato</h2>
       
-   <div class="form-container" style="position:relative;">
-  <form id="contact-form">
-    <input type="text" name="name" placeholder="Seu nome" required />
-    <input type="email" name="email" placeholder="Seu e-mail" required />
-    <textarea name="message" placeholder="Sua mensagem" required></textarea>
-    <button type="submit">Enviar mensagem</button>
-  </form>
+      <div class="form-container" style="position:relative;">
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Seu nome" required />
+          <input type="email" name="email" placeholder="Seu e-mail" required />
+          <textarea name="message" placeholder="Sua mensagem" required></textarea>
+          <button type="submit">Enviar mensagem</button>
+        </form>
 
-  <div id="form-popup" style="display:none;"></div>
-</div>
-
-
-
+        <div id="form-popup" style="display:none;"></div>
+      </div>
 
       <p class="info">
         📧 Email: nzubeikechukwu25@gmail.com <br>
@@ -121,58 +120,54 @@
     <p>© 2026 • Desenvolvedor Web & App</p>
   </footer>
 
+  <!-- FORM POPUP JS -->
   <script>
-const popup = document.getElementById("form-popup");
-const form = document.getElementById("contact-form");
+    const popup = document.getElementById("form-popup");
+    const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault(); // very important
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
 
-  const data = new FormData(form);
+      const data = new FormData(form);
 
-  try {
-    const response = await fetch("https://formspree.io/f/xeelzjkw", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" },
+      try {
+        const response = await fetch("https://formspree.io/f/xeelzjkw", {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          form.reset();
+          popup.innerText = "✅ Mensagem enviada com sucesso!";
+          popup.style.display = "block";
+          popup.style.background = "#4CAF50";
+          popup.style.color = "#fff";
+          popup.style.padding = "12px 20px";
+          popup.style.position = "absolute";
+          popup.style.top = "-50px";
+          popup.style.left = "50%";
+          popup.style.transform = "translateX(-50%)";
+          popup.style.borderRadius = "5px";
+          popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+          popup.style.fontFamily = "Arial, sans-serif";
+          popup.style.fontSize = "14px";
+          popup.style.transition = "all 0.5s ease";
+          popup.style.opacity = "1";
+
+          setTimeout(() => {
+            popup.style.opacity = "0";
+            setTimeout(() => popup.style.display = "none", 500);
+          }, 3000);
+        } else {
+          alert("❌ Erro ao enviar. Tente novamente.");
+        }
+
+      } catch (error) {
+        alert("❌ Erro de conexão. Tente novamente.");
+      }
     });
-
-    if (response.ok) {
-      form.reset();
-      popup.innerText = "✅ Mensagem enviada com sucesso!";
-      popup.style.display = "block";
-      popup.style.background = "#4CAF50";
-      popup.style.color = "#fff";
-      popup.style.padding = "10px 15px";
-      popup.style.position = "absolute";
-      popup.style.top = "-50px";
-      popup.style.left = "0";
-      popup.style.borderRadius = "5px";
-      popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
-      popup.style.fontFamily = "Arial, sans-serif";
-      popup.style.fontSize = "14px";
-      popup.style.transition = "all 0.5s ease";
-      popup.style.opacity = "1";
-
-      // Hide after 3 seconds
-      setTimeout(() => {
-        popup.style.opacity = "0";
-        setTimeout(() => {
-          popup.style.display = "none";
-        }, 500);
-      }, 3000);
-
-    } else {
-      alert("❌ Erro ao enviar. Tente novamente.");
-    }
-
-  } catch (error) {
-    alert("❌ Erro de conexão. Tente novamente.");
-  }
-});
-
-
-</script>
+  </script>
 
 </body>
 </html>
