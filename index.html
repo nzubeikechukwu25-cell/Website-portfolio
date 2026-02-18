@@ -78,16 +78,17 @@
     <div class="container">
       <h2>Contato</h2>
       
-   <form class="form" id="contact-form">
-  <input type="text" name="name" placeholder="Seu nome" required />
-  <input type="email" name="email" placeholder="Seu e-mail" required />
-  <textarea name="message" placeholder="Sua mensagem" required></textarea>
-  <button type="submit">Enviar mensagem</button>
-</form>
+   <div class="form-container" style="position:relative;">
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Seu nome" required />
+    <input type="email" name="email" placeholder="Seu e-mail" required />
+    <textarea name="message" placeholder="Sua mensagem" required></textarea>
+    <button type="submit">Enviar mensagem</button>
+  </form>
 
-<p id="form-status"></p>
-      <!-- Popup container -->
-<div id="form-popup" style="display:none;"></div>
+  <div id="form-popup" style="display:none;"></div>
+</div>
+
 
 
 
@@ -102,12 +103,12 @@
   <footer class="footer">
     <p>© 2026 • Desenvolvedor Web & App</p>
   </footer>
-<script>
+  
 const popup = document.getElementById("form-popup");
 const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
+form.addEventListener("submit", async function(e) {
+  e.preventDefault(); // very important
 
   const data = new FormData(form);
 
@@ -120,46 +121,38 @@ form.addEventListener("submit", async function (e) {
 
     if (response.ok) {
       form.reset();
-      showPopup("✅ Mensagem enviada com sucesso!", true);
+      popup.innerText = "✅ Mensagem enviada com sucesso!";
+      popup.style.display = "block";
+      popup.style.background = "#4CAF50";
+      popup.style.color = "#fff";
+      popup.style.padding = "10px 15px";
+      popup.style.position = "absolute";
+      popup.style.top = "-50px";
+      popup.style.left = "0";
+      popup.style.borderRadius = "5px";
+      popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+      popup.style.fontFamily = "Arial, sans-serif";
+      popup.style.fontSize = "14px";
+      popup.style.transition = "all 0.5s ease";
+      popup.style.opacity = "1";
+
+      // Hide after 3 seconds
+      setTimeout(() => {
+        popup.style.opacity = "0";
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 500);
+      }, 3000);
+
     } else {
-      showPopup("❌ Erro ao enviar. Tente novamente.", false);
+      alert("❌ Erro ao enviar. Tente novamente.");
     }
 
   } catch (error) {
-    showPopup("❌ Erro de conexão. Tente novamente.", false);
+    alert("❌ Erro de conexão. Tente novamente.");
   }
 });
 
-function showPopup(message, success = true) {
-  popup.innerText = message;
-  popup.style.background = success ? "#4CAF50" : "#f44336";
-  popup.style.color = "#fff";
-  popup.style.padding = "15px 20px";
-  popup.style.position = "fixed";
-  popup.style.top = "20px";
-  popup.style.right = "-400px"; // start offscreen
-  popup.style.borderRadius = "5px";
-  popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
-  popup.style.zIndex = "9999";
-  popup.style.fontFamily = "Arial, sans-serif";
-  popup.style.fontSize = "16px";
-  popup.style.transition = "right 0.5s ease"; // animate slide
-
-  // Slide in
-  popup.style.display = "block";
-  setTimeout(() => {
-    popup.style.right = "20px";
-  }, 10);
-
-  // Slide out after 3 seconds
-  setTimeout(() => {
-    popup.style.right = "-400px";
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 500); // wait for slide out
-  }, 3000);
-}
-</script>
 
 
 
