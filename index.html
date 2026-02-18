@@ -124,8 +124,9 @@
 
         // Force redirect after 1 second
         setTimeout(() => {
-          window.location.replace("https://nzubeikechukwu25-cell.github.io/Website-portfolio/");
-        }, 1000);
+  window.location.href = window.location.origin + window.location.pathname;
+}, 1000);
+
 
       } else {
         const errorData = await response.json();
